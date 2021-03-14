@@ -35,7 +35,6 @@ class NotebookFragment : Fragment() {
             val intent = Intent(context, DigitalInkMainActivity::class.java)
             startActivity(intent)
         }
-
         return root
     }
 
