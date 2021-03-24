@@ -10,8 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.scool.scoolstudent.DigitalInkMainActivity
+import com.scool.scoolstudent.NotebookMainActivity
 import com.scool.scoolstudent.R
 
 class NotebookFragment : Fragment() {
@@ -25,14 +24,14 @@ class NotebookFragment : Fragment() {
     ): View? {
         notebookViewModel =
                 ViewModelProvider(this).get(NotebookViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
+        val root = inflater.inflate(R.layout.fragment_notebooks, container, false)
         val textView: TextView = root.findViewById(R.id.text_gallery)
         notebookViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         val fab: FloatingActionButton = root.findViewById(R.id.fab)
         fab.setOnClickListener { e ->
-            val intent = Intent(context, DigitalInkMainActivity::class.java)
+            val intent = Intent(context, NotebookMainActivity::class.java)
             startActivity(intent)
         }
         return root

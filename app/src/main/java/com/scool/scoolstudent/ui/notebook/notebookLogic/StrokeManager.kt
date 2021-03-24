@@ -1,4 +1,4 @@
-package com.scool.scoolstudent.ui.notebook.NotebookLogic
+package com.scool.scoolstudent.ui.notebook.notebookLogic
 
 import android.os.Handler
 import android.os.Message
@@ -9,7 +9,7 @@ import androidx.annotation.VisibleForTesting
 import com.google.android.gms.tasks.SuccessContinuation
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
-import com.scool.scoolstudent.ui.notebook.NotebookLogic.RecognitionTask.RecognizedInk
+import com.scool.scoolstudent.ui.notebook.notebookLogic.RecognitionTask.RecognizedInk
 import com.google.mlkit.vision.digitalink.Ink
 import com.google.mlkit.vision.digitalink.Ink.Stroke
 import java.util.ArrayList
@@ -36,6 +36,7 @@ class StrokeManager {
 
     // For handling recognition and model downloading.
     private var recognitionTask: RecognitionTask? = null
+
 
     @JvmField
     @VisibleForTesting
@@ -92,20 +93,26 @@ class StrokeManager {
         recognitionTask!!.result()?.let {
             content.add(it)
 
-            //TODO make this more efficient
-            var contentString: String = "";
-            for (item in content) {
-                contentString += item.text
-                contentString += " "
-            }
+            updateContent()
 
-            status = contentString
+
+
             if (clearCurrentInkAfterRecognition) {
                 resetCurrentInk()
             }
 
             contentChangedListener?.onContentChanged()
         }
+    }
+
+    private fun updateContent() {
+        //TODO make this more efficient
+        var contentString: String = "";
+        for (item in content) {
+            contentString += item.text
+            contentString += " "
+        }
+        status = contentString
     }
 
     fun reset() {
@@ -160,15 +167,17 @@ class StrokeManager {
      *
      * @return whether the touch event was handled.
      */
-    fun addNewTouchEvent(event: MotionEvent): Boolean {
+    fun addNewTouchEvent(event: MotionEvent, isEraseOn: Boolean): Boolean {
+
         val action = event.actionMasked
         val x = event.x
         val y = event.y
         val t = System.currentTimeMillis()
 
+        //Check for coalitions on content - and delete from content
+
         // A new event happened -> clear all pending timeout messages.
         uiHandler.removeMessages(TIMEOUT_TRIGGER)
-//        Log.i(TAG,"${x}+ ${y} ${t}")
         when (action) {
             MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> strokeBuilder.addPoint(
                 Ink.Point.create(
@@ -178,12 +187,27 @@ class StrokeManager {
                 )
             )
             MotionEvent.ACTION_UP -> {
-                strokeBuilder.addPoint(Ink.Point.create(x, y, t))
-                inkBuilder.addStroke(strokeBuilder.build())
-                strokeBuilder = Stroke.builder()
-                stateChangedSinceLastRequest = true
-                //always send to recognizer without asking the user
-                recognize()
+                if (isEraseOn) {
+                    //TODO figure out when to delete an element (maybe by bounding box?)
+                    //TODO CRash when more then one index
+                    for ((index, value) in content.withIndex()) {
+                        if (true) {
+                            Log.i("mytag", "I deleted ${content[index].text} ")
+                            content.removeAt(index)
+                        }
+                    }
+                    contentChangedListener?.onContentChanged()
+                    resetCurrentInk()
+                    updateContent()
+                } else {
+                    strokeBuilder.addPoint(Ink.Point.create(x, y, t))
+                    inkBuilder.addStroke(strokeBuilder.build())
+                    strokeBuilder = Stroke.builder()
+                    stateChangedSinceLastRequest = true
+                    //always send to recognizer without asking the user
+                    recognize()
+                }
+
             }
             else -> // Indicate touch event wasn't handled.
                 return false

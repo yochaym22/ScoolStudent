@@ -1,4 +1,4 @@
-package com.scool.scoolstudent.ui.notebook.NotebookLogic
+package com.scool.scoolstudent.ui.notebook.notebookLogic
 
 import android.content.Context
 import android.graphics.*
@@ -8,9 +8,12 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
-import com.scool.scoolstudent.ui.notebook.NotebookLogic.StrokeManager.ContentChangedListener
+
+
+import com.scool.scoolstudent.ui.notebook.notebookLogic.StrokeManager.ContentChangedListener
 import com.google.mlkit.vision.digitalink.Ink
 import com.google.mlkit.vision.digitalink.Ink.Stroke
+
 
 /**
  * Main view for rendering content.
@@ -19,6 +22,8 @@ import com.google.mlkit.vision.digitalink.Ink.Stroke
  * The view accepts touch inputs, renders them on screen, and passes the content to the
  * StrokeManager. The view is also able to draw content from the StrokeManager.
  */
+
+
 class DrawingView @JvmOverloads constructor(
     context: Context?,
     attributeSet: AttributeSet? = null
@@ -26,9 +31,12 @@ class DrawingView @JvmOverloads constructor(
 ) :
     View(context, attributeSet), ContentChangedListener {
     private val recognizedStrokePaint: Paint
-    private val textPaint: TextPaint
+    private var textPaint: TextPaint
+    val erasePaint = TextPaint()
+    var preTextPaint = Paint()
+    var isEraseOn = false;
 
-    private val currentStrokePaint: Paint
+    var currentStrokePaint: Paint
     private val canvasPaint: Paint
     private val currentStroke: Path
     private lateinit var drawCanvas: Canvas
@@ -58,13 +66,28 @@ class DrawingView @JvmOverloads constructor(
         for (ri in content) {
             drawInk(ri.ink, recognizedStrokePaint)
             val bb = computeBoundingBox(ri.ink)
-                  //drawTextIntoBoundingBox(ri.text ?: "DONE", bb, textPaint)
+            //drawTextIntoBoundingBox(ri.text ?: "DONE", bb, textPaint)
         }
         invalidate()
     }
 
+    /**
+     * Function to handle the flag of the erase state
+     * and the paint to save the last paint.
+     */
+    fun onEraseClick() {
+        if (!isEraseOn) {
+            isEraseOn = true;
+            preTextPaint = currentStrokePaint;
+            currentStrokePaint= erasePaint;
+        } else {
+            isEraseOn = false;
+            currentStrokePaint = preTextPaint;
+        }
+    }
+
     //TODO CTRL F FUNCTION Drawing on screen
-     fun drawTextIntoBoundingBox(text: String, bb: Rect, textPaint: TextPaint) {
+    fun drawTextIntoBoundingBox(text: String, bb: Rect, textPaint: TextPaint) {
         val arbitraryFixedSize = 20f
         // Set an arbitrary text size to learn how high the text will be.
         textPaint.textSize = arbitraryFixedSize
@@ -82,25 +105,26 @@ class DrawingView @JvmOverloads constructor(
         textPaint.getTextBounds(text, 0, text.length, r)
 
         // Adjust scaleX to squeeze the text.
-       textPaint.textScaleX = bb.width().toFloat() / r.width().toFloat()
+        textPaint.textScaleX = bb.width().toFloat() / r.width().toFloat()
 
         // And finally draw the text.
-     //drawCanvas.drawText(text, bb.left.toFloat(), bb.bottom.toFloat(), textPaint)
+        //drawCanvas.drawText(text, bb.left.toFloat(), bb.bottom.toFloat(), textPaint)
 
         //draw find text
-        Log.i("MLKD.Cordinates",bb.toString())
-        drawCanvas.drawRect(bb,textPaint);
+        Log.i("MLKD.Cordinates", bb.toString())
+        drawCanvas.drawRect(bb, textPaint);
     }
 
     private fun drawInk(ink: Ink, paint: Paint) {
-        Log.i("DEBUG","DrawInk")
-        for (s in ink.strokes) {
-            drawStroke(s, paint)
-        }
+            Log.i("DEBUG", "DrawInk")
+            for (s in ink.strokes) {
+                drawStroke(s, paint)
+            }
     }
 
     private fun drawStroke(s: Stroke, paint: Paint) {
-        Log.i("DEBUG","drawStroke")
+
+        Log.i("DEBUG", "drawStroke")
         Log.i(TAG, "drawstroke")
         var path: Path = Path()
         path.moveTo(s.points[0].x, s.points[0].y)
@@ -121,14 +145,14 @@ class DrawingView @JvmOverloads constructor(
     }
 
     override fun onDraw(canvas: Canvas) {
-        Log.i("DEBUG","onDraw")
+        Log.i("DEBUG", "onDraw")
         canvas.drawBitmap(canvasBitmap, 0f, 0f, canvasPaint)
         canvas.drawPath(currentStroke, currentStrokePaint)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
-        Log.i("DEBUG","onTouchEvent")
+        Log.i("DEBUGa", "DRAWING VIEW onTouchEvent")
         val action = event.actionMasked
         val x = event.x
         val y = event.y
@@ -144,7 +168,7 @@ class DrawingView @JvmOverloads constructor(
             else -> {
             }
         }
-        strokeManager.addNewTouchEvent(event)
+        strokeManager.addNewTouchEvent(event,isEraseOn)
         invalidate()
         return true
     }
@@ -217,7 +241,12 @@ class DrawingView @JvmOverloads constructor(
         textPaint.color = -0x0000ff // yellow.
         textPaint.alpha = 80
 
+        //eraser
+        erasePaint.color = Color.TRANSPARENT
+        erasePaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+
         currentStroke = Path()
         canvasPaint = Paint(Paint.DITHER_FLAG)
     }
+
 }

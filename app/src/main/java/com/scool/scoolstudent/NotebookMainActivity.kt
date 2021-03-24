@@ -4,21 +4,26 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.ImmutableSortedSet
 //import com.google.mlkit.samples.vision.digitalink.R
 import com.google.mlkit.vision.digitalink.DigitalInkRecognitionModelIdentifier
-import com.scool.scoolstudent.ui.notebook.NotebookLogic.DrawingView
-import com.scool.scoolstudent.ui.notebook.NotebookLogic.StatusTextView
-import com.scool.scoolstudent.ui.notebook.NotebookLogic.StrokeManager
+import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView
+import com.scool.scoolstudent.ui.notebook.notebookLogic.StatusTextView
+import com.scool.scoolstudent.ui.notebook.notebookLogic.StrokeManager
+import io.realm.Realm
 //import kotlinx.android.synthetic.main.activity_digital_ink_main_kotlin.*
 //import kotlinx.android.synthetic.main.activity_digital_ink_main_kotlin.view.*
 import java.util.Locale
 
+
+
+
 /** Main activity which creates a StrokeManager and connects it to the DrawingView.  */
-class DigitalInkMainActivity : AppCompatActivity(), StrokeManager.DownloadedModelsChangedListener {
+class NotebookMainActivity : AppCompatActivity(), StrokeManager.DownloadedModelsChangedListener {
     @JvmField
     @VisibleForTesting
     val strokeManager = StrokeManager()
@@ -34,6 +39,7 @@ class DigitalInkMainActivity : AppCompatActivity(), StrokeManager.DownloadedMode
         drawingView.setStrokeManager(strokeManager)
         val searchBar = findViewById<SearchView>(R.id.searchView)
         Log.i("DEBUG", "hello from on crerate")
+        Realm.init(this)
 
         statusTextView.setStrokeManager(strokeManager)
         strokeManager.setStatusChangedListener(statusTextView)
@@ -93,6 +99,17 @@ class DigitalInkMainActivity : AppCompatActivity(), StrokeManager.DownloadedMode
         strokeManager.reset()
         val drawingView = findViewById<DrawingView>(R.id.drawing_view)
         drawingView.clear()
+    }
+
+
+    fun eraseClick(v : View?){
+        val drawingView = findViewById<DrawingView>(R.id.drawing_view)
+        drawingView.onEraseClick();
+        Log.i("Eyalo","Setting erase to true")
+    }
+
+    fun debug(v:View?){
+        var x = 3 ; //debugable
     }
 
     fun deleteClick(v: View?) {
@@ -203,4 +220,5 @@ class DigitalInkMainActivity : AppCompatActivity(), StrokeManager.DownloadedMode
                 "Shapes"
         )
     }
+
 }

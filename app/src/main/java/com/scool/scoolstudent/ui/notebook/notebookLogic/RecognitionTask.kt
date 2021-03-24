@@ -1,4 +1,4 @@
-package com.scool.scoolstudent.ui.notebook.NotebookLogic
+package com.scool.scoolstudent.ui.notebook.notebookLogic
 
 import android.util.Log
 import com.google.android.gms.tasks.SuccessContinuation

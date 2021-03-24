@@ -29,7 +29,7 @@
 
     </LinearLayout>
 
-    <com.scool.scoolstudent.ui.notebook.NotebookLogic.DrawingView
+    <com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView
         android:id="@+id/drawing_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="127dp">
 
-            <com.scool.scoolstudent.ui.notebook.NotebookLogic.StatusTextView
+            <com.scool.scoolstudent.ui.notebook.notebookLogic.StatusTextView
                 android:id="@+id/status_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -78,6 +78,29 @@
                 app:layout_constraintStart_toStartOf="@+id/status_text_view"
                 app:layout_constraintTop_toBottomOf="@+id/status_text_view"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/debug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:onClick="debug"
+                android:text="Debug"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/status_text_view" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:onClick="eraseClick"
+                android:text="Erase"
+                app:layout_constraintBottom_toBottomOf="@+id/clear_button"
+                app:layout_constraintEnd_toStartOf="@+id/clear_button"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/textView2"
