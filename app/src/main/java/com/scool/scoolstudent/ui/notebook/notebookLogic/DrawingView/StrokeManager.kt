@@ -1,4 +1,4 @@
-package com.scool.scoolstudent.ui.notebook.notebookLogic
+package com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView
 
 import android.os.Handler
 import android.os.Message
@@ -9,7 +9,7 @@ import androidx.annotation.VisibleForTesting
 import com.google.android.gms.tasks.SuccessContinuation
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
-import com.scool.scoolstudent.ui.notebook.notebookLogic.RecognitionTask.RecognizedInk
+import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.RecognitionTask.RecognizedInk
 import com.google.mlkit.vision.digitalink.Ink
 import com.google.mlkit.vision.digitalink.Ink.Stroke
 import java.util.ArrayList
@@ -92,26 +92,23 @@ class StrokeManager {
     private fun commitResult() {
         recognitionTask!!.result()?.let {
             content.add(it)
-
             updateContent()
-
-
-
             if (clearCurrentInkAfterRecognition) {
                 resetCurrentInk()
             }
-
             contentChangedListener?.onContentChanged()
         }
     }
 
     private fun updateContent() {
-        //TODO make this more efficient
+
+
         var contentString: String = "";
+        //TODO make this more efficient
         for (item in content) {
             contentString += item.text
             contentString += " "
-        }
+            }
         status = contentString
     }
 
@@ -187,9 +184,11 @@ class StrokeManager {
                 )
             )
             MotionEvent.ACTION_UP -> {
+
                 if (isEraseOn) {
                     //TODO figure out when to delete an element (maybe by bounding box?)
                     //TODO CRash when more then one index
+                        inkBuilder.build()
                     for ((index, value) in content.withIndex()) {
                         if (true) {
                             Log.i("mytag", "I deleted ${content[index].text} ")
@@ -200,12 +199,12 @@ class StrokeManager {
                     resetCurrentInk()
                     updateContent()
                 } else {
+
                     strokeBuilder.addPoint(Ink.Point.create(x, y, t))
                     inkBuilder.addStroke(strokeBuilder.build())
                     strokeBuilder = Stroke.builder()
                     stateChangedSinceLastRequest = true
-                    //always send to recognizer without asking the user
-                    recognize()
+                  //  recognize()
                 }
 
             }
@@ -316,3 +315,5 @@ class StrokeManager {
         private const val TIMEOUT_TRIGGER = 1
     }
 }
+
+

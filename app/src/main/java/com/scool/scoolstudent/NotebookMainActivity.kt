@@ -1,25 +1,26 @@
 package com.scool.scoolstudent
 
+//import com.google.mlkit.samples.vision.digitalink.R
+//import kotlinx.android.synthetic.main.activity_digital_ink_main_kotlin.*
+//import kotlinx.android.synthetic.main.activity_digital_ink_main_kotlin.view.*
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
-
+import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.ImmutableSortedSet
-//import com.google.mlkit.samples.vision.digitalink.R
 import com.google.mlkit.vision.digitalink.DigitalInkRecognitionModelIdentifier
-import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView
-import com.scool.scoolstudent.ui.notebook.notebookLogic.StatusTextView
-import com.scool.scoolstudent.ui.notebook.notebookLogic.StrokeManager
+import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.DrawingView
+import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.StatusTextView
+import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.StrokeManager
 import io.realm.Realm
-//import kotlinx.android.synthetic.main.activity_digital_ink_main_kotlin.*
-//import kotlinx.android.synthetic.main.activity_digital_ink_main_kotlin.view.*
-import java.util.Locale
-
-
+import kotlinx.android.synthetic.main.activity_digital_ink_main.*
+import java.util.*
 
 
 /** Main activity which creates a StrokeManager and connects it to the DrawingView.  */
@@ -27,14 +28,16 @@ class NotebookMainActivity : AppCompatActivity(), StrokeManager.DownloadedModels
     @JvmField
     @VisibleForTesting
     val strokeManager = StrokeManager()
+
     // private lateinit var languageAdapter: ArrayAdapter<ModelLanguageContainer>
 
+    @RequiresApi(Build.VERSION_CODES.N)
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_digital_ink_main)
         val drawingView = findViewById<DrawingView>(R.id.drawing_view)
         val statusTextView = findViewById<StatusTextView>(
-                R.id.status_text_view
+            R.id.status_text_view
         )
         drawingView.setStrokeManager(strokeManager)
         val searchBar = findViewById<SearchView>(R.id.searchView)
@@ -57,6 +60,7 @@ class NotebookMainActivity : AppCompatActivity(), StrokeManager.DownloadedModels
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
+
             override fun onQueryTextChange(newText: String): Boolean {
                 strokeManager.searchInk(newText, drawingView)
                 return true
@@ -102,25 +106,38 @@ class NotebookMainActivity : AppCompatActivity(), StrokeManager.DownloadedModels
     }
 
 
-    fun eraseClick(v : View?){
+    fun eraseClick(v: View?) {
         val drawingView = findViewById<DrawingView>(R.id.drawing_view)
+
+        if (!drawingView.isEraseOn) {
+            eraseButton.setBackgroundColor(Color.RED)
+        } else {
+            eraseButton.setBackgroundColor(Color.BLUE)
+        }
         drawingView.onEraseClick();
-        Log.i("Eyalo","Setting erase to true")
+
     }
 
-    fun debug(v:View?){
-        var x = 3 ; //debugable
+    fun debug(v: View?) {
+         strokeManager.recognize()
+
     }
+
+    fun colorPicker(v:View?) {
+        drawing_view.showColorPicker()
+    }
+
+
 
     fun deleteClick(v: View?) {
         strokeManager.deleteActiveModel()
     }
 
     private class ModelLanguageContainer private constructor(
-            private val label: String,
-            val languageTag: String?
+        private val label: String,
+        val languageTag: String?
     ) :
-            Comparable<ModelLanguageContainer> {
+        Comparable<ModelLanguageContainer> {
 
         var downloaded: Boolean = false
 
@@ -152,34 +169,34 @@ class NotebookMainActivity : AppCompatActivity(), StrokeManager.DownloadedModels
 
     private fun populateLanguageAdapter(): ArrayAdapter<ModelLanguageContainer> {
         val languageAdapter =
-                ArrayAdapter<ModelLanguageContainer>(this, android.R.layout.simple_spinner_item)
+            ArrayAdapter<ModelLanguageContainer>(this, android.R.layout.simple_spinner_item)
         languageAdapter.add(
-                ModelLanguageContainer.createLabelOnly(
-                        "Select language"
-                )
+            ModelLanguageContainer.createLabelOnly(
+                "Select language"
+            )
         )
         languageAdapter.add(
-                ModelLanguageContainer.createLabelOnly(
-                        "Non-text Models"
-                )
+            ModelLanguageContainer.createLabelOnly(
+                "Non-text Models"
+            )
         )
 
         // Manually add non-text models first
         for (languageTag in NON_TEXT_MODELS.keys) {
             languageAdapter.add(
-                    ModelLanguageContainer.createModelContainer(
-                            NON_TEXT_MODELS[languageTag]!!,
-                            languageTag
-                    )
+                ModelLanguageContainer.createModelContainer(
+                    NON_TEXT_MODELS[languageTag]!!,
+                    languageTag
+                )
             )
         }
         languageAdapter.add(
-                ModelLanguageContainer.createLabelOnly(
-                        "Text Models"
-                )
+            ModelLanguageContainer.createLabelOnly(
+                "Text Models"
+            )
         )
         val textModels =
-                ImmutableSortedSet.naturalOrder<ModelLanguageContainer>()
+            ImmutableSortedSet.naturalOrder<ModelLanguageContainer>()
         for (modelIdentifier in DigitalInkRecognitionModelIdentifier.allModelIdentifiers()) {
             if (NON_TEXT_MODELS.containsKey(modelIdentifier.languageTag)) {
                 continue
@@ -193,9 +210,9 @@ class NotebookMainActivity : AppCompatActivity(), StrokeManager.DownloadedModels
                 label.append(", ").append(modelIdentifier.scriptSubtag).append(" Script")
             }
             textModels.add(
-                    ModelLanguageContainer.createModelContainer(
-                            label.toString(), modelIdentifier.languageTag
-                    )
+                ModelLanguageContainer.createModelContainer(
+                    label.toString(), modelIdentifier.languageTag
+                )
             )
         }
         languageAdapter.addAll(textModels.build())
@@ -212,12 +229,12 @@ class NotebookMainActivity : AppCompatActivity(), StrokeManager.DownloadedModels
     companion object {
         private const val TAG = "MLKDI.Activity"
         private val NON_TEXT_MODELS = ImmutableMap.of(
-                "zxx-Zsym-x-autodraw",
-                "Autodraw",
-                "zxx-Zsye-x-emoji",
-                "Emoji",
-                "zxx-Zsym-x-shapes",
-                "Shapes"
+            "zxx-Zsym-x-autodraw",
+            "Autodraw",
+            "zxx-Zsye-x-emoji",
+            "Emoji",
+            "zxx-Zsym-x-shapes",
+            "Shapes"
         )
     }
 

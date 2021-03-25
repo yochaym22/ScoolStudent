@@ -1,9 +1,9 @@
-package com.scool.scoolstudent.ui.notebook.notebookLogic
+package com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
-import com.scool.scoolstudent.ui.notebook.notebookLogic.StrokeManager.StatusChangedListener
+import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.StrokeManager.StatusChangedListener
 
 /**
  * Status bar for the test app.

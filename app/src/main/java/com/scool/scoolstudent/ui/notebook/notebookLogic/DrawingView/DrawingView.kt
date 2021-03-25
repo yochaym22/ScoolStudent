@@ -1,18 +1,22 @@
-package com.scool.scoolstudent.ui.notebook.notebookLogic
+package com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView
+
 
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.*
+import android.os.Build
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.util.Log
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
-
-
-import com.scool.scoolstudent.ui.notebook.notebookLogic.StrokeManager.ContentChangedListener
+import androidx.annotation.RequiresApi
+import com.flask.colorpicker.ColorPickerView
+import com.flask.colorpicker.builder.ColorPickerDialogBuilder
 import com.google.mlkit.vision.digitalink.Ink
 import com.google.mlkit.vision.digitalink.Ink.Stroke
+import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.StrokeManager.ContentChangedListener
 
 
 /**
@@ -24,6 +28,7 @@ import com.google.mlkit.vision.digitalink.Ink.Stroke
  */
 
 
+@RequiresApi(Build.VERSION_CODES.N)
 class DrawingView @JvmOverloads constructor(
     context: Context?,
     attributeSet: AttributeSet? = null
@@ -31,10 +36,11 @@ class DrawingView @JvmOverloads constructor(
 ) :
     View(context, attributeSet), ContentChangedListener {
     private val recognizedStrokePaint: Paint
-    private var textPaint: TextPaint
+    private var markerPaint: TextPaint
     val erasePaint = TextPaint()
     var preTextPaint = Paint()
     var isEraseOn = false;
+    var currentBackgroundColor = 0x0000FF;
 
     var currentStrokePaint: Paint
     private val canvasPaint: Paint
@@ -45,6 +51,7 @@ class DrawingView @JvmOverloads constructor(
     fun setStrokeManager(strokeManager: StrokeManager) {
         this.strokeManager = strokeManager
     }
+
 
     override fun onSizeChanged(
         width: Int,
@@ -76,10 +83,12 @@ class DrawingView @JvmOverloads constructor(
      * and the paint to save the last paint.
      */
     fun onEraseClick() {
+
         if (!isEraseOn) {
             isEraseOn = true;
             preTextPaint = currentStrokePaint;
-            currentStrokePaint= erasePaint;
+            currentStrokePaint = erasePaint;
+
         } else {
             isEraseOn = false;
             currentStrokePaint = preTextPaint;
@@ -116,11 +125,12 @@ class DrawingView @JvmOverloads constructor(
     }
 
     private fun drawInk(ink: Ink, paint: Paint) {
-            Log.i("DEBUG", "DrawInk")
-            for (s in ink.strokes) {
-                drawStroke(s, paint)
-            }
+        Log.i("DEBUG", "DrawInk")
+        for (s in ink.strokes) {
+            drawStroke(s, paint)
+        }
     }
+
 
     private fun drawStroke(s: Stroke, paint: Paint) {
 
@@ -146,6 +156,7 @@ class DrawingView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         Log.i("DEBUG", "onDraw")
+
         canvas.drawBitmap(canvasBitmap, 0f, 0f, canvasPaint)
         canvas.drawPath(currentStroke, currentStrokePaint)
     }
@@ -168,7 +179,7 @@ class DrawingView @JvmOverloads constructor(
             else -> {
             }
         }
-        strokeManager.addNewTouchEvent(event,isEraseOn)
+        strokeManager.addNewTouchEvent(event, isEraseOn)
         invalidate()
         return true
     }
@@ -221,10 +232,33 @@ class DrawingView @JvmOverloads constructor(
             return bb
         }
     }
+    fun showColorPicker() {
+        ColorPickerDialogBuilder
+            .with(context)
+            .setTitle("Choose color")
+            .initialColor(currentBackgroundColor)
+            .wheelType(ColorPickerView.WHEEL_TYPE.CIRCLE)
+            .density(15)
+            .setOnColorSelectedListener {
+                currentStrokePaint.color = it
+                recognizedStrokePaint.color = it
+            }
+            .setPositiveButton(
+                "ok"
+            )
+            { dialog, selectedColor, allColors -> changeBackgroundColor(selectedColor) }
+            .setNegativeButton("cancel", DialogInterface.OnClickListener { dialog, which -> })
+            .showColorPreview(true)
+            .build()
+            .show()
+    }
+    fun changeBackgroundColor(color: Int) {
+        currentBackgroundColor = color
+    }
 
     init {
         currentStrokePaint = Paint()
-        currentStrokePaint.color = -0xff01 // pink.
+        currentStrokePaint.color = Color.BLACK // black.
         currentStrokePaint.isAntiAlias = true
         // Set stroke width based on display density.
         currentStrokePaint.strokeWidth = TypedValue.applyDimension(
@@ -236,17 +270,21 @@ class DrawingView @JvmOverloads constructor(
         currentStrokePaint.strokeJoin = Paint.Join.ROUND
         currentStrokePaint.strokeCap = Paint.Cap.ROUND
         recognizedStrokePaint = Paint(currentStrokePaint)
-        recognizedStrokePaint.color = Color.BLACK // pale pink.
-        textPaint = TextPaint()
-        textPaint.color = -0x0000ff // yellow.
-        textPaint.alpha = 80
+        recognizedStrokePaint.color = Color.BLACK // black
+        markerPaint = TextPaint()
+        markerPaint.color = -0x0000ff // yellow.
+        markerPaint.alpha = 80
 
         //eraser
         erasePaint.color = Color.TRANSPARENT
-        erasePaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+        erasePaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
+
 
         currentStroke = Path()
         canvasPaint = Paint(Paint.DITHER_FLAG)
     }
+
+
+
 
 }

@@ -1,4 +1,4 @@
-package com.scool.scoolstudent.ui.notebook.notebookLogic
+package com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView
 
 import android.util.Log
 import com.google.android.gms.tasks.SuccessContinuation
@@ -50,9 +50,7 @@ class RecognitionTask(private val recognizer: DigitalInkRecognizer?, private val
                         TAG,
                         "result: " + currentResult!!.text
                     )
-                    Log.i(
-                        TAG, "result info $ink"
-                    )
+
                     done.set(
                         true
                     )

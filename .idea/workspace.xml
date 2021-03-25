@@ -10,7 +10,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="mytag" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="colorpicker" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -41,19 +41,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d023059-7cc8-4675-8936-7e38248b3e20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_getkeepsafe_relinker_relinker_1_4_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_realm_realm_android_kotlin_extensions_object_server_10_3_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_realm_realm_android_library_object_server_10_3_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_realm_realm_annotations_10_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_serialization_core_jvm_1_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_serialization_json_jvm_1_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mongodb_bson_3_12_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/notebookplaceholder.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/schplaceholder.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____app_libs_sdk_v1_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____app_libs_spenremote_v1_0_1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_QuadFlask_colorpicker_0_0_15_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/libs/sdk-v1.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/libs/spenremote-v1.0.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/sPen/ConnectSpen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/eraser.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_1_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_ktx_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_ktx_1_1_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_experimental_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_experimental_1_0_0_aar.xml" afterDir="false" />
@@ -92,7 +89,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_multidex_multidex_2_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_multidex_multidex_2_0_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_multidex_multidex_instrumentation_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_multidex_multidex_instrumentation_2_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_multidex_multidex_instrumentation_2_0_0_aar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_common_2_3_4_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_common_2_3_4_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_common_ktx_2_3_4_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_common_ktx_2_3_4_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_fragment_2_3_4_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_fragment_2_3_4_aar.xml" afterDir="false" />
@@ -123,6 +120,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager2_viewpager2_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager2_viewpager2_1_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_work_work_runtime_2_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_work_work_runtime_2_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_getkeepsafe_relinker_relinker_1_4_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_getkeepsafe_relinker_relinker_1_4_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_17_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_clearcut_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_clearcut_17_0_0_aar.xml" afterDir="false" />
@@ -132,27 +130,19 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_components_16_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_components_16_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_mlkit_common_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_mlkit_common_17_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_mlkit_digital_ink_recognition_16_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_mlkit_digital_ink_recognition_16_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_4_31.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_3_72.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_realm_realm_android_kotlin_extensions_object_server_10_3_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_realm_realm_android_kotlin_extensions_object_server_10_3_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_realm_realm_android_library_object_server_10_3_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_realm_realm_android_library_object_server_10_3_1_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/Scool_Student.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Scool_Student.app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/DigitalInkMainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/NotebookMainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/home/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/NotebookFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/NotebookFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/NotebookLogic/DrawingView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/NotebookLogic/ModelManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/ModelManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/NotebookLogic/RecognitionTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/RecognitionTask.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/NotebookLogic/StatusTextView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/StatusTextView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/NotebookLogic/StrokeManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/StrokeManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/schedule/ScheduleFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/schedule/ScheduleFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/NotebookMainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/NotebookMainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/DrawingView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/ModelManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/ModelManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/RecognitionTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/RecognitionTask.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/StatusTextView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/StatusTextView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/StrokeManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/StrokeManager.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_digital_ink_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_digital_ink_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_gallery.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_notebooks.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_schedule.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_schedule.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -169,9 +159,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
         <option value="Kotlin Data Class" />
+        <option value="layoutResourceFile" />
+        <option value="Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -200,30 +192,39 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="R52NB0921ZX" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-03-24T10:31:06.374Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-03-25T11:46:59.300Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android-custom-view/home/eyal/.gradle/caches/modules-2/files-2.1/com.github.QuadFlask/colorpicker/0.0.15/f6dac616ea0bf22ff31dfcab30c83a4047e79af6/colorpicker-0.0.15-sources.jar!/com/flask/colorpicker/slider/AlphaSlider.java_SELECTED" value="AlphaSlider" />
     <property name="android-custom-view/home/eyal/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
     <property name="android-custom-view/home/eyal/AndroidStudioProjects/ScoolStudent/app/build/tmp/kapt3/stubs/debug/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView.java_SELECTED" value="DrawingView" />
     <property name="android-custom-view/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/DrawingView.kt_SELECTED" value="DrawingView" />
     <property name="android-custom-view/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/StatusTextView.kt_SELECTED" value="StatusTextView" />
     <property name="android-custom-view/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/Activity/DrawingView.kt_SELECTED" value="DrawingView" />
     <property name="android-custom-view/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/Activity/StatusTextView.kt_SELECTED" value="StatusTextView" />
+    <property name="android-custom-view/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/Components/ColorPicker.kt_SELECTED" value="ColorPicker" />
     <property name="android-custom-view/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView.kt_SELECTED" value="DrawingView" />
+    <property name="android-custom-view/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/DrawingView.kt_SELECTED" value="DrawingView" />
+    <property name="android-custom-view/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/StatusTextView.kt_SELECTED" value="StatusTextView" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/libs" />
+    <property name="multi-representation-preview/home/eyal/.gradle/caches/modules-2/files-2.1/com.github.QuadFlask/colorpicker/0.0.15/f6dac616ea0bf22ff31dfcab30c83a4047e79af6/colorpicker-0.0.15-sources.jar!/com/flask/colorpicker/slider/AlphaSlider.java_selected" value="Custom views" />
     <property name="multi-representation-preview/home/eyal/Android/Sdk/sources/android-30/android/view/View.java_selected" value="Custom views" />
     <property name="multi-representation-preview/home/eyal/AndroidStudioProjects/ScoolStudent/app/build/tmp/kapt3/stubs/debug/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView.java_selected" value="Custom views" />
     <property name="multi-representation-preview/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/DrawingView.kt_selected" value="Custom views" />
     <property name="multi-representation-preview/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/StatusTextView.kt_selected" value="Custom views" />
     <property name="multi-representation-preview/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/Activity/DrawingView.kt_selected" value="Custom views" />
     <property name="multi-representation-preview/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/Activity/StatusTextView.kt_selected" value="Custom views" />
+    <property name="multi-representation-preview/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/Components/ColorPicker.kt_selected" value="" />
     <property name="multi-representation-preview/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView.kt_selected" value="Custom views" />
+    <property name="multi-representation-preview/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/DrawingView.kt_selected" value="Custom views" />
+    <property name="multi-representation-preview/home/eyal/AndroidStudioProjects/ScoolStudent/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/StatusTextView.kt_selected" value="Custom views" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView" />
       <recent name="com.scool.scoolstudent.ui.notebook.Activity" />
       <recent name="com.scool.scoolstudent" />
       <recent name="com.scool.scoolstudent.ui" />
@@ -235,6 +236,7 @@
       <recent name="com.scool.scoolstudent.ui.schedule" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/libs" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/Activity" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook" />
@@ -331,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615752633288</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="-Started implementing erase function, still needs some work">
+      <created>1616614666203</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1616614666203</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -364,7 +373,8 @@
     </ignored-roots>
     <MESSAGE value="layout stuff" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="-Started implementing erase function, still needs some work" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Started implementing erase function, still needs some work" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2613" y="298" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1616604763120">
@@ -383,34 +393,34 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2613" y="289" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615918874715" />
-    <state x="2621" y="263" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1615740755681">
+    <state x="2621" y="263" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1616692372750">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2621" y="263" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615740755681" />
+    <state x="2621" y="263" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616692372750" />
     <state x="2420" y="216" width="963" height="793" key="#xdebugger.XInspectDialog" timestamp="1616606037130">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2420" y="216" width="963" height="793" key="#xdebugger.XInspectDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616606037130" />
-    <state x="2463" y="298" width="824" height="491" key="AndroidCreateResourceFileDialog" timestamp="1615750681442">
+    <state x="2463" y="298" width="824" height="491" key="AndroidCreateResourceFileDialog" timestamp="1616666168097">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2463" y="298" width="824" height="491" key="AndroidCreateResourceFileDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615750681442" />
+    <state x="2463" y="298" width="824" height="491" key="AndroidCreateResourceFileDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616666168097" />
     <state x="2697" y="349" width="357" height="388" key="AndroidCreateXmlResourceDialog" timestamp="1615750901823">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2697" y="349" width="357" height="388" key="AndroidCreateXmlResourceDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615750901823" />
-    <state x="2112" y="87" width="1526" height="912" key="CommitChangelistDialog2" timestamp="1615752633232">
+    <state x="2112" y="87" width="1526" height="912" key="CommitChangelistDialog2" timestamp="1616614666002">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2112" y="87" width="1526" height="912" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615752633232" />
+    <state x="2112" y="87" width="1526" height="912" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616614666002" />
     <state width="412" height="506" key="DebuggerActiveHint" timestamp="1616611915632">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="412" height="506" key="DebuggerActiveHint/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616611915631" />
-    <state x="2658" y="301" width="424" height="491" key="FileChooserDialogImpl" timestamp="1616593627568">
+    <state x="2658" y="301" width="502" height="491" key="FileChooserDialogImpl" timestamp="1616672668874">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2658" y="301" width="424" height="491" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616593627568" />
+    <state x="2658" y="301" width="502" height="491" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616672668874" />
     <state x="2721" y="440" width="317" height="207" key="Github.ShareDialog" timestamp="1615752555291">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -419,46 +429,50 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2367" y="219" width="1016" height="648" key="Github.UntrackedFilesDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615752603491" />
-    <state width="1874" height="370" key="GridCell.Tab.0.bottom" timestamp="1616614494868">
+    <state width="1874" height="89" key="GridCell.Tab.0.bottom" timestamp="1616700110643">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="370" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616614494868" />
-    <state width="1874" height="370" key="GridCell.Tab.0.center" timestamp="1616614494868">
+    <state width="1874" height="89" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616700110643" />
+    <state width="1874" height="89" key="GridCell.Tab.0.center" timestamp="1616700110643">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="370" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616614494868" />
-    <state width="1874" height="370" key="GridCell.Tab.0.left" timestamp="1616614494868">
+    <state width="1874" height="89" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616700110643" />
+    <state width="1874" height="89" key="GridCell.Tab.0.left" timestamp="1616700110643">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="370" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616614494868" />
-    <state width="1874" height="370" key="GridCell.Tab.0.right" timestamp="1616614494868">
+    <state width="1874" height="89" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616700110643" />
+    <state width="1874" height="89" key="GridCell.Tab.0.right" timestamp="1616700110643">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="370" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616614494868" />
-    <state width="1874" height="271" key="GridCell.Tab.1.bottom" timestamp="1616612671989">
+    <state width="1874" height="89" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616700110643" />
+    <state width="1874" height="396" key="GridCell.Tab.1.bottom" timestamp="1616676811025">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="271" key="GridCell.Tab.1.bottom/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616612671989" />
-    <state width="1874" height="271" key="GridCell.Tab.1.center" timestamp="1616612671989">
+    <state width="1874" height="396" key="GridCell.Tab.1.bottom/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616676811025" />
+    <state width="1874" height="396" key="GridCell.Tab.1.center" timestamp="1616676811025">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="271" key="GridCell.Tab.1.center/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616612671989" />
-    <state width="1874" height="271" key="GridCell.Tab.1.left" timestamp="1616612671989">
+    <state width="1874" height="396" key="GridCell.Tab.1.center/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616676811025" />
+    <state width="1874" height="396" key="GridCell.Tab.1.left" timestamp="1616676811025">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="271" key="GridCell.Tab.1.left/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616612671989" />
-    <state width="1874" height="271" key="GridCell.Tab.1.right" timestamp="1616612671989">
+    <state width="1874" height="396" key="GridCell.Tab.1.left/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616676811025" />
+    <state width="1874" height="396" key="GridCell.Tab.1.right" timestamp="1616676811025">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="271" key="GridCell.Tab.1.right/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616612671989" />
+    <state width="1874" height="396" key="GridCell.Tab.1.right/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616676811025" />
+    <state x="2505" y="242" width="739" height="602" key="RollbackChangesDialog" timestamp="1616694607819">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2505" y="242" width="739" height="602" key="RollbackChangesDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616694607819" />
     <state x="2369" y="175" width="1022" height="737" key="SettingsEditor" timestamp="1615752803542">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2369" y="175" width="1022" height="737" key="SettingsEditor/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615752803542" />
-    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1615752652739">
+    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1616614687892">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615752652739" />
+    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616614687892" />
     <state width="960" height="540" key="XDebugger.FullValuePopup" timestamp="1616610814261">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -467,34 +481,32 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2652" y="320" width="446" height="447" key="chooseDestDirectoryDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615917778962" />
-    <state x="2651" y="455" width="448" height="180" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616602756101">
+    <state x="2020" y="100" width="1720" height="880" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1616694906371">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2651" y="455" width="458" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616602756101" />
+    <state x="2020" y="100" width="1720" height="880" key="com.intellij.history.integration.ui.views.FileHistoryDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616694906370" />
+    <state x="2651" y="455" width="448" height="180" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616699586460">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2651" y="455" width="458" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616699586460" />
     <state x="772" y="471" width="448" height="180" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1616074491345" />
     <state x="2712" y="312" width="325" height="462" key="refactoring.ChangeSignatureDialog" timestamp="1616075635432">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2712" y="312" width="325" height="462" key="refactoring.ChangeSignatureDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616075635432" />
-    <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1616607590650">
+    <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1616700714911">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616607590650" />
+    <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616700714911" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/NotebookMainActivity.kt</url>
-          <line>111</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
         <watch expression="content" language="kotlin" />
-        <watch expression="value.ink.strokes[0].points[0].x" language="kotlin" />
+        <watch expression="currentInk.strokes" language="kotlin" />
+        <watch expression="content[index].ink.strokes" language="kotlin" />
+        <watch expression="content[index].ink.strokes[0].points[content[index].ink.strokes[0].points.size-1].x" language="kotlin" />
+        <watch expression="content[index].ink.strokes[0].points[0].x" language="kotlin" />
       </configuration>
     </watches-manager>
   </component>
