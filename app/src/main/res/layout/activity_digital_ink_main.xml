@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/colorPicker"
         android:layout_width="wrap_content"
@@ -29,7 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drawing_view">
 
-        <com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.StatusTextView
+        <com.scool.scoolstudent.ui.notebook.notebookLogic.drawingView.StatusTextView
             android:id="@+id/status_text_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -60,12 +62,12 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/recoBtn"
+            android:id="@+id/debugBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:onClick="debug"
-            android:text="send"
+            android:onClick="debugClick"
+            android:text="Debug"
             app:layout_constraintBottom_toBottomOf="@+id/eraseButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/status_text_view"
@@ -92,9 +94,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/reconizeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:onClick="recognizeClick"
+            android:text="Recignize"
+            app:layout_constraintBottom_toBottomOf="@+id/debugBtn"
+            app:layout_constraintStart_toEndOf="@+id/debugBtn" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.DrawingView
+    <com.scool.scoolstudent.ui.notebook.notebookLogic.drawingView.DrawingView
         android:id="@+id/drawing_view"
         android:layout_width="match_parent"
         android:layout_height="1000dp"

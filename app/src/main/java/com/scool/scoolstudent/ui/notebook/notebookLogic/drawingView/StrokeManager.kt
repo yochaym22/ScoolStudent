@@ -1,4 +1,4 @@
-package com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView
+package com.scool.scoolstudent.ui.notebook.notebookLogic.drawingView
 
 import android.os.Handler
 import android.os.Message
@@ -9,7 +9,7 @@ import androidx.annotation.VisibleForTesting
 import com.google.android.gms.tasks.SuccessContinuation
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
-import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.RecognitionTask.RecognizedInk
+import com.scool.scoolstudent.ui.notebook.notebookLogic.drawingView.RecognitionTask.RecognizedInk
 import com.google.mlkit.vision.digitalink.Ink
 import com.google.mlkit.vision.digitalink.Ink.Stroke
 import java.util.ArrayList
@@ -45,6 +45,7 @@ class StrokeManager {
 
     // Managing the recognition queue.
     private val content: MutableList<RecognizedInk> = ArrayList()
+    private val unRecognizedContent: MutableList<Ink> = ArrayList()
 
     // Managing ink currently drawn.
     private var strokeBuilder = Stroke.builder()
@@ -56,6 +57,9 @@ class StrokeManager {
     private var triggerRecognitionAfterInput = true
     private var clearCurrentInkAfterRecognition = true
     val textPaint: TextPaint = TextPaint()
+
+    val hashMap: HashMap<dataStructure, Ink.Stroke> = HashMap<dataStructure, Ink.Stroke>()
+
 
     var status: String? = ""
         private set(newStatus) {
@@ -89,26 +93,45 @@ class StrokeManager {
         }
     )
 
+    /**
+     * Adds the new result to the content list
+     */
     private fun commitResult() {
-        recognitionTask!!.result()?.let {
-            content.add(it)
-            updateContent()
-            if (clearCurrentInkAfterRecognition) {
-                resetCurrentInk()
+        if (recognitionTask != null) {
+            recognitionTask!!.result()?.let {
+                content.add(it)
+                updateContent()
+                if (clearCurrentInkAfterRecognition) {
+                    resetCurrentInk()
+                }
+                contentChangedListener?.onContentChanged()
+                //reset recognition task status
+                recognitionTask = null
+                //clears the unRecognized list
+                unRecognizedContent.clear()
             }
-            contentChangedListener?.onContentChanged()
+        } else {
+            //add to queue for non recognized inks
+            unRecognizedContent.add(currentInk)
+            Log.i("eyalo", "Added unRcognized ink to the list")
         }
+
+    }
+
+    fun testHashMap() {
+        val firstEle = dataStructure(3f, 4f)
+        hashMap[firstEle] = strokeBuilder.build()
+        Log.i(TAG, "test")
+
     }
 
     private fun updateContent() {
-
-
         var contentString: String = "";
         //TODO make this more efficient
         for (item in content) {
             contentString += item.text
             contentString += " "
-            }
+        }
         status = contentString
     }
 
@@ -125,7 +148,6 @@ class StrokeManager {
         //find in content
         textPaint.color = -0x0000ff // yellow.
         textPaint.alpha = 70
-
         if (query != "") {
             //Todo recursive search
             for (i in content) {
@@ -134,6 +156,7 @@ class StrokeManager {
                     //we found a match inside i
                     //get coordinates and mark place as found
                     val rect = DrawingView.computeBoundingBox(i.ink)
+
                     drawingView.drawTextIntoBoundingBox("", rect, textPaint)
                 } else {
                     Log.i("debug", "false")
@@ -154,6 +177,7 @@ class StrokeManager {
     val currentInk: Ink
         get() = inkBuilder.build()
 
+
     /**
      * This method is called when a new touch event happens on the drawing client and notifies the
      * StrokeManager of new content being added.
@@ -171,11 +195,10 @@ class StrokeManager {
         val y = event.y
         val t = System.currentTimeMillis()
 
-        //Check for coalitions on content - and delete from content
-
         // A new event happened -> clear all pending timeout messages.
         uiHandler.removeMessages(TIMEOUT_TRIGGER)
         when (action) {
+            //Gather
             MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> strokeBuilder.addPoint(
                 Ink.Point.create(
                     x,
@@ -184,34 +207,45 @@ class StrokeManager {
                 )
             )
             MotionEvent.ACTION_UP -> {
-
                 if (isEraseOn) {
-                    //TODO figure out when to delete an element (maybe by bounding box?)
                     //TODO CRash when more then one index
-                        inkBuilder.build()
+                    inkBuilder.build()
                     for ((index, value) in content.withIndex()) {
                         if (true) {
-                            Log.i("mytag", "I deleted ${content[index].text} ")
-                            content.removeAt(index)
+                            //Figure out where to delete
+                            //In the content list or unRecognized list
+                            //TODO implement a delete function from hashMap
+                            if (recognitionTask == null) {
+                                content.removeAt(index)
+                            } else {
+                                unRecognizedContent.removeAt(index)
+                            }
                         }
                     }
                     contentChangedListener?.onContentChanged()
                     resetCurrentInk()
                     updateContent()
                 } else {
-
                     strokeBuilder.addPoint(Ink.Point.create(x, y, t))
                     inkBuilder.addStroke(strokeBuilder.build())
                     strokeBuilder = Stroke.builder()
                     stateChangedSinceLastRequest = true
-                  //  recognize()
+                    contentChangedListener?.onContentChanged()
+                    //always send to recognizer without asking the user
+                    if (recognitionTask == null)
+                        commitResult()
+                    // recognize()
                 }
-
             }
             else -> // Indicate touch event wasn't handled.
                 return false
         }
         return true
+    }
+
+
+    fun getContent(): List<RecognizedInk> {
+        return content
     }
 
     // Listeners to update the drawing and status.
@@ -229,9 +263,6 @@ class StrokeManager {
         this.downloadedModelsChangedListener = downloadedModelsChangedListener
     }
 
-    fun getContent(): List<RecognizedInk> {
-        return content
-    }
 
     // Model downloading / deleting / setting.
     fun setActiveModel(languageTag: String) {
@@ -315,5 +346,6 @@ class StrokeManager {
         private const val TIMEOUT_TRIGGER = 1
     }
 }
+
 
 

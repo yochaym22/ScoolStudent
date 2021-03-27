@@ -1,6 +1,7 @@
-package com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView
+package com.scool.scoolstudent.ui.notebook.notebookLogic.drawingView
 
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.graphics.*
@@ -15,8 +16,7 @@ import androidx.annotation.RequiresApi
 import com.flask.colorpicker.ColorPickerView
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder
 import com.google.mlkit.vision.digitalink.Ink
-import com.google.mlkit.vision.digitalink.Ink.Stroke
-import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.StrokeManager.ContentChangedListener
+import com.scool.scoolstudent.ui.notebook.notebookLogic.drawingView.StrokeManager.ContentChangedListener
 
 
 /**
@@ -37,9 +37,9 @@ class DrawingView @JvmOverloads constructor(
     View(context, attributeSet), ContentChangedListener {
     private val recognizedStrokePaint: Paint
     private var markerPaint: TextPaint
-    val erasePaint = TextPaint()
+    private val erasePaint = TextPaint()
     var preTextPaint = Paint()
-    var isEraseOn = false;
+    var isEraseOn = false
     var currentBackgroundColor = 0x0000FF;
 
     var currentStrokePaint: Paint
@@ -51,7 +51,6 @@ class DrawingView @JvmOverloads constructor(
     fun setStrokeManager(strokeManager: StrokeManager) {
         this.strokeManager = strokeManager
     }
-
 
     override fun onSizeChanged(
         width: Int,
@@ -65,83 +64,19 @@ class DrawingView @JvmOverloads constructor(
         invalidate()
     }
 
-    private fun redrawContent() {
-        clear()
-        val currentInk = strokeManager.currentInk
-        drawInk(currentInk, currentStrokePaint)
-        val content = strokeManager.getContent()
-        for (ri in content) {
-            drawInk(ri.ink, recognizedStrokePaint)
-            val bb = computeBoundingBox(ri.ink)
-            //drawTextIntoBoundingBox(ri.text ?: "DONE", bb, textPaint)
-        }
-        invalidate()
-    }
-
     /**
      * Function to handle the flag of the erase state
      * and the paint to save the last paint.
      */
     fun onEraseClick() {
-
         if (!isEraseOn) {
             isEraseOn = true;
             preTextPaint = currentStrokePaint;
             currentStrokePaint = erasePaint;
-
         } else {
             isEraseOn = false;
             currentStrokePaint = preTextPaint;
         }
-    }
-
-    //TODO CTRL F FUNCTION Drawing on screen
-    fun drawTextIntoBoundingBox(text: String, bb: Rect, textPaint: TextPaint) {
-        val arbitraryFixedSize = 20f
-        // Set an arbitrary text size to learn how high the text will be.
-        textPaint.textSize = arbitraryFixedSize
-        textPaint.textScaleX = 1f
-
-        // Now determine the size of the rendered text with these settings.
-        val r = Rect()
-        textPaint.getTextBounds(text, 0, text.length, r)
-
-        // Adjust height such that target height is met.
-        val textSize = arbitraryFixedSize * bb.height().toFloat() / r.height().toFloat()
-        textPaint.textSize = textSize
-
-        // Redetermine the size of the rendered text with the new settings.
-        textPaint.getTextBounds(text, 0, text.length, r)
-
-        // Adjust scaleX to squeeze the text.
-        textPaint.textScaleX = bb.width().toFloat() / r.width().toFloat()
-
-        // And finally draw the text.
-        //drawCanvas.drawText(text, bb.left.toFloat(), bb.bottom.toFloat(), textPaint)
-
-        //draw find text
-        Log.i("MLKD.Cordinates", bb.toString())
-        drawCanvas.drawRect(bb, textPaint);
-    }
-
-    private fun drawInk(ink: Ink, paint: Paint) {
-        Log.i("DEBUG", "DrawInk")
-        for (s in ink.strokes) {
-            drawStroke(s, paint)
-        }
-    }
-
-
-    private fun drawStroke(s: Stroke, paint: Paint) {
-
-        Log.i("DEBUG", "drawStroke")
-        Log.i(TAG, "drawstroke")
-        var path: Path = Path()
-        path.moveTo(s.points[0].x, s.points[0].y)
-        for (p in s.points.drop(1)) {
-            path.lineTo(p.x, p.y)
-        }
-        drawCanvas.drawPath(path, paint)
     }
 
     fun clear() {
@@ -155,31 +90,34 @@ class DrawingView @JvmOverloads constructor(
     }
 
     override fun onDraw(canvas: Canvas) {
-        Log.i("DEBUG", "onDraw")
-
+        Log.i(TAG, "onDraw")
+        //Draw whole line to screen
         canvas.drawBitmap(canvasBitmap, 0f, 0f, canvasPaint)
+        //Realtime draw
         canvas.drawPath(currentStroke, currentStrokePaint)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
-
-        Log.i("DEBUGa", "DRAWING VIEW onTouchEvent")
+        Log.i(TAG, "onTouch event")
         val action = event.actionMasked
         val x = event.x
         val y = event.y
-
         when (action) {
             MotionEvent.ACTION_DOWN -> currentStroke.moveTo(x, y) //start
             MotionEvent.ACTION_MOVE -> currentStroke.lineTo(x, y) //on motion
             MotionEvent.ACTION_UP -> { //finished
                 currentStroke.lineTo(x, y)
-                drawCanvas.drawPath(currentStroke, currentStrokePaint)
+              //  drawCanvas.drawPath(currentStroke, currentStrokePaint)
                 currentStroke.reset()
             }
             else -> {
+                return false
             }
         }
+        //Send info to strokeManger
         strokeManager.addNewTouchEvent(event, isEraseOn)
+        //Calls onDraw to re-render the screen
         invalidate()
         return true
     }
@@ -187,6 +125,39 @@ class DrawingView @JvmOverloads constructor(
     override fun onContentChanged() {
         redrawContent()
     }
+
+    private fun redrawContent() {
+        //Todo instead of full clear,need to clear only the specific content
+      clear()
+        val currentInk = strokeManager.currentInk
+        drawInk(currentInk, currentStrokePaint)
+        val content = strokeManager.getContent()
+        for (ri in content) {
+            drawInk(ri.ink, recognizedStrokePaint)
+            //  val bb = computeBoundingBox(ri.ink)
+            //drawTextIntoBoundingBox(ri.text ?: "DONE", bb, textPaint)
+        }
+        invalidate()
+    }
+
+
+    private fun drawInk(ink: Ink, paint: Paint) {
+        Log.i("DEBUG", "DrawInk")
+        for (s in ink.strokes) {
+            drawStroke(s, paint)
+        }
+    }
+
+    private fun drawStroke(s: Ink.Stroke, paint: Paint) {
+        Log.i(TAG, "drawstroke")
+        var path: Path = Path()
+        path.moveTo(s.points[0].x, s.points[0].y)
+        for (p in s.points.drop(1)) {
+            path.lineTo(p.x, p.y)
+        }
+        drawCanvas.drawPath(path, paint)
+    }
+
 
     companion object {
         private const val TAG = "MLKD.DrawingView"
@@ -232,6 +203,10 @@ class DrawingView @JvmOverloads constructor(
             return bb
         }
     }
+
+    /**
+     * Shows color picker dialog
+     */
     fun showColorPicker() {
         ColorPickerDialogBuilder
             .with(context)
@@ -252,8 +227,41 @@ class DrawingView @JvmOverloads constructor(
             .build()
             .show()
     }
-    fun changeBackgroundColor(color: Int) {
+
+    //Helper function for showColorPicker
+    private fun changeBackgroundColor(color: Int) {
         currentBackgroundColor = color
+    }
+
+    /**
+     *
+     */
+    fun drawTextIntoBoundingBox(text: String, bb: Rect, textPaint: TextPaint) {
+        val arbitraryFixedSize = 20f
+        // Set an arbitrary text size to learn how high the text will be.
+        textPaint.textSize = arbitraryFixedSize
+        textPaint.textScaleX = 1f
+
+        // Now determine the size of the rendered text with these settings.
+        val r = Rect()
+        textPaint.getTextBounds(text, 0, text.length, r)
+
+        // Adjust height such that target height is met.
+        val textSize = arbitraryFixedSize * bb.height().toFloat() / r.height().toFloat()
+        textPaint.textSize = textSize
+
+        // Redetermine the size of the rendered text with the new settings.
+        textPaint.getTextBounds(text, 0, text.length, r)
+
+        // Adjust scaleX to squeeze the text.
+        textPaint.textScaleX = bb.width().toFloat() / r.width().toFloat()
+
+        // And finally draw the text.
+        //drawCanvas.drawText(text, bb.left.toFloat(), bb.bottom.toFloat(), textPaint)
+
+        //draw find text
+        Log.i("MLKD.Cordinates", bb.toString())
+        drawCanvas.drawRect(bb, textPaint);
     }
 
     init {
@@ -270,7 +278,7 @@ class DrawingView @JvmOverloads constructor(
         currentStrokePaint.strokeJoin = Paint.Join.ROUND
         currentStrokePaint.strokeCap = Paint.Cap.ROUND
         recognizedStrokePaint = Paint(currentStrokePaint)
-        recognizedStrokePaint.color = Color.BLACK // black
+        recognizedStrokePaint.color = currentStrokePaint.color // black
         markerPaint = TextPaint()
         markerPaint.color = -0x0000ff // yellow.
         markerPaint.alpha = 80
@@ -279,12 +287,7 @@ class DrawingView @JvmOverloads constructor(
         erasePaint.color = Color.TRANSPARENT
         erasePaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
 
-
         currentStroke = Path()
         canvasPaint = Paint(Paint.DITHER_FLAG)
     }
-
-
-
-
 }

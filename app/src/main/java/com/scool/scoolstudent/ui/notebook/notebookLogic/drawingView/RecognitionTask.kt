@@ -1,4 +1,4 @@
-package com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView
+package com.scool.scoolstudent.ui.notebook.notebookLogic.drawingView
 
 import android.util.Log
 import com.google.android.gms.tasks.SuccessContinuation
@@ -29,6 +29,7 @@ class RecognitionTask(private val recognizer: DigitalInkRecognizer?, private val
 
     /** Helper class that stores an ink along with the corresponding recognized text.  */
     class RecognizedInk internal constructor(val ink: Ink, val text: String?)
+
 
     fun run(): Task<String?> {
         Log.i(TAG, "RecoTask.run")

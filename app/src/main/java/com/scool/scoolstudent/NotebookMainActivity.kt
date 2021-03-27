@@ -1,8 +1,5 @@
 package com.scool.scoolstudent
 
-//import com.google.mlkit.samples.vision.digitalink.R
-//import kotlinx.android.synthetic.main.activity_digital_ink_main_kotlin.*
-//import kotlinx.android.synthetic.main.activity_digital_ink_main_kotlin.view.*
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -15,10 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.common.collect.ImmutableMap
 import com.google.common.collect.ImmutableSortedSet
 import com.google.mlkit.vision.digitalink.DigitalInkRecognitionModelIdentifier
-import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.DrawingView
-import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.StatusTextView
-import com.scool.scoolstudent.ui.notebook.notebookLogic.DrawingView.StrokeManager
-import io.realm.Realm
+import com.scool.scoolstudent.ui.notebook.notebookLogic.drawingView.DrawingView
+import com.scool.scoolstudent.ui.notebook.notebookLogic.drawingView.StatusTextView
+import com.scool.scoolstudent.ui.notebook.notebookLogic.drawingView.StrokeManager
 import kotlinx.android.synthetic.main.activity_digital_ink_main.*
 import java.util.*
 
@@ -41,8 +37,6 @@ class NotebookMainActivity : AppCompatActivity(), StrokeManager.DownloadedModels
         )
         drawingView.setStrokeManager(strokeManager)
         val searchBar = findViewById<SearchView>(R.id.searchView)
-        Log.i("DEBUG", "hello from on crerate")
-        Realm.init(this)
 
         statusTextView.setStrokeManager(strokeManager)
         strokeManager.setStatusChangedListener(statusTextView)
@@ -67,7 +61,6 @@ class NotebookMainActivity : AppCompatActivity(), StrokeManager.DownloadedModels
             }
         })
 
-
 //        languageSpinner.onItemSelectedListener = object : OnItemSelectedListener {
 //            override fun onItemSelected(
 //                parent: AdapterView<*>,
@@ -90,6 +83,11 @@ class NotebookMainActivity : AppCompatActivity(), StrokeManager.DownloadedModels
 //        strokeManager.reset()
     }
 
+
+    fun debugClick(v:View?){
+        strokeManager.testHashMap()
+
+    }
 
     fun downloadClick(v: View?) {
         strokeManager.download()
@@ -118,16 +116,9 @@ class NotebookMainActivity : AppCompatActivity(), StrokeManager.DownloadedModels
 
     }
 
-    fun debug(v: View?) {
-         strokeManager.recognize()
-
-    }
-
-    fun colorPicker(v:View?) {
+    fun colorPicker(v: View?) {
         drawing_view.showColorPicker()
     }
-
-
 
     fun deleteClick(v: View?) {
         strokeManager.deleteActiveModel()
