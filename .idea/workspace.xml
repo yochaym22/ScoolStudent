@@ -41,22 +41,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d023059-7cc8-4675-8936-7e38248b3e20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/drawingView/dataStructure.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/NotebookMainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/NotebookMainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/DrawingView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/drawingView/DrawingView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/ModelManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/drawingView/ModelManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/RecognitionTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/drawingView/RecognitionTask.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/StatusTextView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/drawingView/StatusTextView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/DrawingView/StrokeManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/drawingView/StrokeManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_digital_ink_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_digital_ink_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/drawingView/DrawingView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/scool/scoolstudent/ui/notebook/notebookLogic/drawingView/DrawingView.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R52NB0921ZX]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -259,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616700997454</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="-Added new list for unRecognized inks in order to delete even if we didn't recognized the ink&#10;-Started adding HashMap&lt;(x,y)-&gt;Stroke&gt; in order to track coalitions , still need to implement this.&#10;-Still need to implement ink analyze to separate strokes, &#10;-Delete still crash if there are more then one ink">
+      <created>1616841205712</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1616841205712</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -294,7 +294,9 @@
     <MESSAGE value="test" />
     <MESSAGE value="-Started implementing erase function, still needs some work" />
     <MESSAGE value="-Added sPen Sdk , not working yet.&#10;-Added color pallet.&#10;-Still crash on erase with more then one item in the array list&#10;-Backup to this stage." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Added sPen Sdk , not working yet.&#10;-Added color pallet.&#10;-Still crash on erase with more then one item in the array list&#10;-Backup to this stage." />
+    <MESSAGE value="-Added new list for unRecognized inks in order to delete even if we didn't recognized the ink&#10;-Delete still crash if there are more then one ink" />
+    <MESSAGE value="-Added new list for unRecognized inks in order to delete even if we didn't recognized the ink&#10;-Started adding HashMap&lt;(x,y)-&gt;Stroke&gt; in order to track coalitions , still need to implement this.&#10;-Still need to implement ink analyze to separate strokes, &#10;-Delete still crash if there are more then one ink" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Added new list for unRecognized inks in order to delete even if we didn't recognized the ink&#10;-Started adding HashMap&lt;(x,y)-&gt;Stroke&gt; in order to track coalitions , still need to implement this.&#10;-Still need to implement ink analyze to separate strokes, &#10;-Delete still crash if there are more then one ink" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2613" y="298" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1616604763120">
@@ -333,9 +335,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2697" y="349" width="357" height="388" key="AndroidCreateXmlResourceDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615750901823" />
-    <state x="2112" y="87" width="1526" height="912" key="CommitChangelistDialog2" timestamp="1616700997264">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="252" y="112" width="1526" height="912" key="CommitChangelistDialog2" timestamp="1616841205549">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
+    <state x="252" y="112" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1920.1080/3840.0.1920.1080@67.27.1853.1053" timestamp="1616841205549" />
     <state x="2112" y="87" width="1526" height="912" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616700997264" />
     <state width="412" height="506" key="DebuggerActiveHint" timestamp="1616611915632">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -409,9 +412,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2369" y="175" width="1022" height="737" key="SettingsEditor/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1615752803542" />
-    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1616701007443">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="603" y="296" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1616841207798">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
+    <state x="603" y="296" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1920.1080/3840.0.1920.1080@67.27.1853.1053" timestamp="1616841207798" />
     <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1616701007443" />
     <state width="926" height="526" key="XDebugger.FullValuePopup" timestamp="1616838703871">
       <screen x="67" y="27" width="1853" height="1053" />

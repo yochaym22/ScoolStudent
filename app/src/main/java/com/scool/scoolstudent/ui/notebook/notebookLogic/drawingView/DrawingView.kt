@@ -41,7 +41,6 @@ class DrawingView @JvmOverloads constructor(
     var preTextPaint = Paint()
     var isEraseOn = false
     var currentBackgroundColor = 0x0000FF;
-
     var currentStrokePaint: Paint
     private val canvasPaint: Paint
     private val currentStroke: Path
